@@ -1,0 +1,18 @@
+main {
+  min-height: 80vh;
+}
+.ml-auto {
+  margin-left: auto !important;
+}
+h3 {
+  padding: 1rem 0;
+}
+.rating span {
+  margin: 0.1rem;
+}
+.zoom-cards {
+  transition: transform 0.5s !important;
+}
+.zoom-cards:hover {
+  transform: scale(1.05) !important;
+}
