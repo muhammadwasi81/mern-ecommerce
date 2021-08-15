@@ -8,9 +8,11 @@ const connectDB = async () => {
       useFindAndModify: true,
     });
 
-    console.log(`MongoDB CONNECTED: ${connection.connection.host}`);
+    console.log(
+      `MongoDB Connected: ${connection.connection.host}`.cyan.underline
+    );
   } catch (error) {
-    console.log(`Error ${error.message}`);
+    console.log(`Error ${error.message}`.red.underline.bold);
     process.exit(1); // => it means exit with failure if error
   }
 };
