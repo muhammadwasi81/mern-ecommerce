@@ -1,8 +1,9 @@
 {
   "name": "mern-proshop",
   "version": "1.0.0",
-  "description": "",
+  "description": "Mern Stack Shopping Cart",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
