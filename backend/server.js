@@ -4,6 +4,7 @@ import colors from 'colors';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js'; // => .js for es modules
+import userRoutes from './routes/userRoutes.js'; // => .js for es modules
 
 dotenv.config();
 
@@ -11,11 +12,14 @@ connectDB();
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.send('API IS RUNNING....');
 });
 
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 app.use(notFound);
 // Create custom middleware for error message
