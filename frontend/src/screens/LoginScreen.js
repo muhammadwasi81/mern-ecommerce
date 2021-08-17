@@ -13,7 +13,7 @@ const LoginScreen = ({ location, history }) => {
 
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin);
+  const userLogin = useSelector((state) => state.userLogin || {});
   const { loading, error, userInfo } = userLogin;
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
@@ -39,7 +39,9 @@ const LoginScreen = ({ location, history }) => {
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter email"
+            placeholder="Enter your email address"
+            autoFocus={true}
+            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$}"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
@@ -54,7 +56,7 @@ const LoginScreen = ({ location, history }) => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
+        <br />
         <Button type="submit" variant="primary">
           Sign In
         </Button>
