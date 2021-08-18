@@ -13,16 +13,16 @@ const LoginScreen = ({ location, history }) => {
 
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin || {});
-  const { loading, error, userInfo } = userLogin;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin || {};
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      history.push('/');
     }
-  }, [history, userInfo, redirect]);
+  }, [userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -39,9 +39,7 @@ const LoginScreen = ({ location, history }) => {
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter your email address"
-            autoFocus={true}
-            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$}"
+            placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
@@ -61,7 +59,6 @@ const LoginScreen = ({ location, history }) => {
           Sign In
         </Button>
       </Form>
-
       <Row className="py-3">
         <Col>
           New Customer?{' '}
