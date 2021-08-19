@@ -4,7 +4,6 @@ const notFound = (req, res, next) => {
   next(error);
 };
 
-// Create custom middleware for error message
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   res.status(statusCode);

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -18,11 +19,11 @@ const userSchema = mongoose.Schema(
     isAdmin: {
       type: Boolean,
       required: true,
-      default: false, // => when the user registers it will not an admin
+      default: false,
     },
   },
   {
-    timeStamps: true, // => if all conditions are true then timeStamps will run
+    timestamps: true,
   }
 );
 

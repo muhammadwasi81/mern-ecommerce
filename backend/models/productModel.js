@@ -5,16 +5,21 @@ const reviewSchema = mongoose.Schema(
     name: { type: String, required: true },
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
   },
   {
-    timeStamps: true,
+    timestamps: true,
   }
 );
 
 const productSchema = mongoose.Schema(
   {
     user: {
-      type: mongoose.Schema.Types.ObjectId, // => It will be an admin and only admin will create a products
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'User',
     },
@@ -61,7 +66,7 @@ const productSchema = mongoose.Schema(
     },
   },
   {
-    timeStamps: true, // => if all conditions are true then timeStamps will run
+    timestamps: true,
   }
 );
 
