@@ -4,7 +4,41 @@ main {
 .ml-auto {
   margin-left: auto !important;
 }
-
+.search-button {
+  margin: 0px 10px;
+  padding: 0.2rem;
+  color: #4bbf73;
+  border-color: #4bbf73 !important;
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.input-box {
+  width: 13rem;
+  height: 3rem;
+  margin-left: 57px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  border: none;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #f7f7f9;
+  background-clip: padding-box;
+  border: 0 solid #ced4da;
+  border-radius: 0;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 h3 {
   padding: 1rem 0;
 }
