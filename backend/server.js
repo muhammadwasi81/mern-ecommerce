@@ -5,6 +5,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js'; // => .js for es modules
 import userRoutes from './routes/userRoutes.js'; // => .js for es modules
+import orderRoutes from './routes/orderRoutes.js'; // => .js for es modules
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
 
 app.use(notFound);
 // Create custom middleware for error message
