@@ -1,8 +1,8 @@
 # ProShop eCommerce Platform
 
-> eCommerce platform built with the MERN stack & Redux.
+ eCommerce platform built with the MERN stack & Redux.
 
-![screenshot]('<img src="https://i.ibb.co/HGpgnzh/screencapture-proshop-app-wasi-herokuapp-2021-08-19-23-09-57.png" alt="screencapture-proshop-app-wasi-herokuapp-2021-08-19-23-09-57" border="0">')
+<img src="https://i.ibb.co/HGpgnzh/screencapture-proshop-app-wasi-herokuapp-2021-08-19-23-09-57.png" alt="screencapture-proshop-app-wasi-herokuapp-2021-08-19-23-09-57" border="0">
 
 ## Features
 
@@ -22,7 +22,7 @@
 
 ### ES Modules in Node
 
-We use ECMAScript Modules in the backend in this project. Be sure to have at least Node v14.6+ or you will need to add the "--experimental-modules" flag.
+I use ECMAScript Modules in the backend in this project. Be sure to have at least Node v14.6+ or you will need to add the "--experimental-modules" flag.
 
 Also, when importing a file (not a package), be sure to add .js at the end or you will get a "module not found" error
 
