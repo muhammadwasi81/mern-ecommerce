@@ -23,7 +23,7 @@ const LoginScreen = ({ location, history }) => {
   useEffect(() => {
     if (userInfo) {
       history.push(redirect)
-      // toast.success('User Logged In Successfully')
+      toast.success('User Logged In Successfully')
     }
   }, [history, userInfo, redirect])
 
