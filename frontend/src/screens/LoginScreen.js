@@ -38,7 +38,7 @@ const LoginScreen = ({ location, history }) => {
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <ToastContainer
-        position="top-right"
+        position="bottom-center"
         closeOnClick
         theme="colored"
         limit={1}

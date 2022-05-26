@@ -95,7 +95,7 @@ const OrderScreen = ({ match, history }) => {
   ) : (
     <>
       <ToastContainer
-        position="top-right"
+        position="bottom-center"
         closeOnClick
         theme="colored"
         limit={1}
