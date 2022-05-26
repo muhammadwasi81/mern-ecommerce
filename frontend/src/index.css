@@ -1,3 +1,26 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Fredoka', sans-serif;
+  user-select: none;
+}
+
+.navbar {
+  background-color: #203040;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 main {
   min-height: 80vh;
 }
@@ -5,10 +28,11 @@ main {
   margin-left: auto !important;
 }
 .search-button {
+  border-radius: 10px;
   margin: 0px 10px;
   padding: 0.2rem;
-  color: #4bbf73;
-  border-color: #4bbf73 !important;
+  color: #f0c000;
+  border-color: #f0c000 !important;
   display: inline-block;
   font-weight: 600;
   line-height: 1.5rem;
@@ -19,26 +43,10 @@ main {
   user-select: none;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  border-radius: 0;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.input-box {
-  width: 13rem;
-  height: 3rem;
-  margin-left: 57px;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-  border: none;
-  line-height: 1.5;
-  color: #55595c;
-  background-color: #f7f7f9;
-  background-clip: padding-box;
-  border: 0 solid #ced4da;
-  border-radius: 0;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+
 h3 {
   padding: 1rem 0;
 }
@@ -87,4 +95,65 @@ h2 {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
+}
+
+/* products */
+.product-cards {
+  transition: all 0.2s ease-in-out;
+}
+.product-cards:hover {
+  transform: scale(1.05);
+}
+
+/*  top bar */
+
+.blink_text {
+  animation-name: blinker;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  user-select: none;
+}
+
+@keyframes blinker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* scroll bar */
+::selection {
+  background-color: #f0c000;
+  color: white;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #406080;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #203040;
+  border-radius: 10px;
+}
+
+/*  slider arrow */
+
+.react-multiple-carousel__arrow {
+  background-color: #f0c000 !important;
+}
+
+.react-multiple-carousel__arrow::before {
+  color: #000000 !important;
 }

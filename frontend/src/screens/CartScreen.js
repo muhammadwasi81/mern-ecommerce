@@ -63,10 +63,9 @@ const CartScreen = ({ match, location, history }) => {
                       value={item.qty}
                       onChange={(e) =>
                         dispatch(
-                          addToCart(item.product, Number(e.target.value))
+                          addToCart(item.product, Number(e.target.value)),
                         )
-                      }
-                    >
+                      }>
                       {[...Array(item.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
                           {x + 1}
@@ -78,8 +77,7 @@ const CartScreen = ({ match, location, history }) => {
                     <Button
                       type="button"
                       variant="light"
-                      onClick={() => removeFromCartHandler(item.product)}
-                    >
+                      onClick={() => removeFromCartHandler(item.product)}>
                       <i className="fas fa-trash"></i>
                     </Button>
                   </Col>
@@ -104,11 +102,10 @@ const CartScreen = ({ match, location, history }) => {
             </ListGroup.Item>
             <ListGroup.Item>
               <Button
-                type="button"
-                className="btn-block"
+                className="w-100"
+                variant="warning"
                 disabled={cartItems.length === 0}
-                onClick={checkoutHandler}
-              >
+                onClick={checkoutHandler}>
                 Proceed To Checkout
               </Button>
             </ListGroup.Item>

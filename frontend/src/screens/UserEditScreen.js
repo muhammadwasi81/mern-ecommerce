@@ -68,8 +68,7 @@ const UserEditScreen = ({ match, history }) => {
                 type="name"
                 placeholder="Enter name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></Form.Control>
+                onChange={(e) => setName(e.target.value)}></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="email">
@@ -78,8 +77,7 @@ const UserEditScreen = ({ match, history }) => {
                 type="email"
                 placeholder="Enter email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></Form.Control>
+                onChange={(e) => setEmail(e.target.value)}></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="isadmin">
@@ -87,11 +85,10 @@ const UserEditScreen = ({ match, history }) => {
                 type="checkbox"
                 label="Is Admin"
                 checked={isAdmin}
-                onChange={(e) => setIsAdmin(e.target.checked)}
-              ></Form.Check>
+                onChange={(e) => setIsAdmin(e.target.checked)}></Form.Check>
             </Form.Group>
 
-            <Button type="submit" variant="primary">
+            <Button type="submit" variant="warning">
               Update
             </Button>
           </Form>

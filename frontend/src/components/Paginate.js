@@ -1,6 +1,6 @@
-import React from 'react';
-import { Pagination } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import React from 'react'
+import { Pagination } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
   return (
@@ -22,7 +22,7 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
         ))}
       </Pagination>
     )
-  );
-};
+  )
+}
 
-export default Paginate;
+export default Paginate

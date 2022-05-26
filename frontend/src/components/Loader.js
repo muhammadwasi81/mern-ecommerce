@@ -11,8 +11,8 @@ const Loader = () => {
         height: '100px',
         margin: 'auto',
         display: 'block',
-      }}
-    >
+        color: '#f0c040',
+      }}>
       <span className="sr-only">Loading...</span>
     </Spinner>
   );
