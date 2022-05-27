@@ -17,13 +17,13 @@ import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 
 export default function ContactUs() {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
 
   const submitHandler = async (e, data) => {
-    console.log(data)
     e.preventDefault()
     if (!email || !subject || !message) {
       return toast.error('Please fill email, subject and message')
@@ -31,12 +31,14 @@ export default function ContactUs() {
     try {
       setLoading(true)
       const { data } = await axios.post(`/api/email`, {
+        name,
         email,
         subject,
         message,
       })
       setLoading(false)
       toast.success(data.message)
+      setName('')
       setEmail('')
       setSubject('')
       setMessage('')
@@ -91,6 +93,20 @@ export default function ContactUs() {
                   <form onSubmit={submitHandler}>
                     <ul>
                       <h5 className="title">Contact us</h5>
+                      <li className="list-unstyled">
+                        <InputGroup className="mb-3" style={{ width: '250px' }}>
+                          <InputGroup.Text id="basic-addon1">
+                            <i className="fas fa-user"></i>
+                          </InputGroup.Text>
+                          <FormControl
+                            placeholder="name"
+                            aria-label="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            aria-describedby="basic-addon1"
+                          />
+                        </InputGroup>
+                      </li>
                       <li className="list-unstyled">
                         <InputGroup className="mb-3" style={{ width: '250px' }}>
                           <InputGroup.Text id="basic-addon1">

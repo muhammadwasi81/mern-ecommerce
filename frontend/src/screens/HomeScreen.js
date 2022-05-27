@@ -10,6 +10,7 @@ import ProductCarousel from '../components/ProductCarousel'
 import Meta from '../components/Meta'
 import { listProducts } from '../actions/productAction'
 import CarouselSlider from '../components/CarouselSlider'
+import LazyShow from '../animation/LazyShow'
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword
@@ -27,57 +28,59 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
-      <Meta />
-      {!keyword ? (
-        <ProductCarousel />
-      ) : (
-        <Link to="/" className="btn btn-light">
-          Go Back
-        </Link>
-      )}
-      <h1
-        className="text-center mt-2"
-        style={{ textShadow: '1px 1px 1px #eee' }}
-      >
-        Latest Products
-      </h1>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        <>
-          <Row>
-            <CarouselSlider>
-              {products.map((product) => (
-                <Col key={product._id} className="mx-2">
-                  <Product product={product} />
-                </Col>
-              ))}
-            </CarouselSlider>
-          </Row>
-          <div>
+      <LazyShow>
+        <Meta />
+        {!keyword ? (
+          <ProductCarousel />
+        ) : (
+          <Link to="/" className="btn btn-light">
+            Go Back
+          </Link>
+        )}
+        <h1
+          className="text-center mt-2"
+          style={{ textShadow: '1px 1px 1px #eee' }}
+        >
+          Latest Products
+        </h1>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : (
+          <>
             <Row>
-              <h1
-                className="text-center mt-2"
-                style={{ textShadow: '1px 1px 1px #eee' }}
-              >
-                Featured Products
-              </h1>
-              {products.map((product) => (
-                <Col xs={12} md={3} lg={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
+              <CarouselSlider>
+                {products.map((product) => (
+                  <Col key={product._id} className="mx-2">
+                    <Product product={product} />
+                  </Col>
+                ))}
+              </CarouselSlider>
             </Row>
-          </div>
-          <Paginate
-            pages={pages}
-            page={page}
-            keyword={keyword ? keyword : ''}
-          />
-        </>
-      )}
+            <div>
+              <Row>
+                <h1
+                  className="text-center mt-2"
+                  style={{ textShadow: '1px 1px 1px #eee' }}
+                >
+                  Featured Products
+                </h1>
+                {products.map((product) => (
+                  <Col xs={12} md={3} lg={3}>
+                    <Product product={product} />
+                  </Col>
+                ))}
+              </Row>
+            </div>
+            <Paginate
+              pages={pages}
+              page={page}
+              keyword={keyword ? keyword : ''}
+            />
+          </>
+        )}
+      </LazyShow>
     </>
   )
 }

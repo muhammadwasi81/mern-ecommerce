@@ -10,7 +10,6 @@ import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
-import { contactUsTemplate } from './utils/emailTemplate.js'
 
 dotenv.config()
 
@@ -41,16 +40,82 @@ const mailgun = () =>
   })
 
 app.post('/api/email', (req, res) => {
-  const { email, subject, message } = req.body
+  const { email, subject, message, name } = req.body
   mailgun()
     .messages()
     .send(
       {
-        from: 'Muhammad Wasi <wasi@mg.yourdomain.com>',
-        to: `${email}`,
+        from: `${email}`,
+        to: `Wasiarain819@gmail.com`,
         subject: `${subject}`,
         text: `${message}`,
-        html: `${contactUsTemplate}`,
+        html: `
+        <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
+          <tr>
+            <td align="center" style="padding:0;">
+              <table role="presentation"
+                style="width:602px;border-collapse:collapse;border:1px solid #ffffff;border-spacing:0;text-align:left;">
+                <tr>
+                  <td align="center" style="padding:40px 0 30px 0;background:#153643;">
+                   <img src="https://i.ibb.co/nB9Y1vs/MainLogo.png" alt="MainLogo" border="0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:36px 30px 42px 30px;">
+                    <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
+                      <tr>
+                        <td style="padding:0 0 36px 0;color:#153643;">
+                          <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;"> You got a message from:</h1>
+                          <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                          <h3>Name: ${name}</h3>
+                          <h3>Email: ${email}</h3>
+                          <h3>Message: ${message}</h3>
+                            </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:30px;background:#203040;">
+                    <table role="presentation"
+                      style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;">
+                      <tr>
+                        <td style="padding:0;width:50%;" align="left">
+                          <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">
+                            &copy; Tradone 2022. All right is reserved<br /><a href="http://www.example.com"
+                              style="color:#ffffff;text-decoration:underline;">Unsubscribe</a>
+                          </p>
+                        </td>
+                        <td style="padding:0;width:50%;" align="right">
+                          <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;">
+                            <tr>
+                              <td style="padding:0 0 0 10px;width:38px;">
+                                <a href="http://www.twitter.com/muhammadwasi81" style="color:#ffffff;"><img
+                                    src="https://img.icons8.com/ios-filled/344/twitter.png" alt="Twitter" width="38"
+                                    style="height:auto;display:block;border:0;" /></a>
+                              </td>
+                              <td style="padding:0 0 0 10px;width:38px;">
+                                <a href="http://www.facebook.com/" style="color:#ffffff;"><img
+                                    src="https://img.icons8.com/ios-filled/2x/facebook-new.png" alt="Facebook" width="38"
+                                    style="height:auto;display:block;border:0;" /></a>
+                              </td>
+                              <td style="padding:0 0 0 10px;width:38px;">
+                                <a href="http://www.facebook.com/" style="color:#ffffff;"><img
+                                    src="https://img.icons8.com/material-outlined/2x/instagram-new.png" alt="Facebook"
+                                    width="38" style="height:auto;display:block;border:0;" /></a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>`,
       },
       (error, body) => {
         if (error) {
