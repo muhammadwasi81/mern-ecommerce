@@ -33,12 +33,8 @@
   <div><img src="https://i.ibb.co/s1SdcqG/se-project-1.png" alt="se-project-1" border="0"></div>
   <div><img src="https://i.ibb.co/WcdSHYt/se-2.png" alt="se-2" border="0"></div>
   <div><img src="https://i.ibb.co/34VNkbg/se-3.png" alt="se-3" border="0"></div>
-<<<<<<< HEAD
+  
 
-=======
-  
->>>>>>> bd9c9d21a283b745f37fd2cca2c43cbf11218125
-  
   ## Project Objective
   * To build a responsive fully functional Ecommerce application that allows the sellers to save, retrieve and delete data like products, orders and buyers/users and the buyers to select items, save shopping carts and complete payment. 
   * Build an admin dashboard and sales report chart so that it is easier for the seller to manage their inventories and orders 
