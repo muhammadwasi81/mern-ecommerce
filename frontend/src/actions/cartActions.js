@@ -39,7 +39,7 @@ export const saveShippingAddress = (data) => (dispatch) => {
     payload: data,
   })
 
-  localStorage.setItem('shippingAddress', JSON.stringify(data))
+  // localStorage.setItem('shippingAddress', JSON.stringify(data))
 }
 
 export const savePaymentMethod = (data) => (dispatch) => {

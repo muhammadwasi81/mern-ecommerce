@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { savePaymentMethod } from '../actions/cartActions'
+import LazyShow from '../animation/LazyShow'
 
 const PaymentScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
@@ -24,37 +25,39 @@ const PaymentScreen = ({ history }) => {
   }
 
   return (
-    <FormContainer>
-      <CheckoutSteps step1 step2 step3 />
-      <h1>Payment Method</h1>
-      <Form onSubmit={submitHandler}>
-        <Form.Group>
-          <Form.Label as="legend">Select Method</Form.Label>
-          <Col>
-            <Form.Check
-              type="radio"
-              label="PayPal or Credit Card"
-              id="PayPal"
-              name="paymentMethod"
-              value="PayPal"
-              checked
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            />
-          </Col>
-        </Form.Group>
+    <LazyShow>
+      <FormContainer>
+        <CheckoutSteps step1 step2 step3 />
+        <h1>Payment Method</h1>
+        <Form onSubmit={submitHandler}>
+          <Form.Group>
+            <Form.Label as="legend">Select Method</Form.Label>
+            <Col>
+              <Form.Check
+                type="radio"
+                label="PayPal or Credit Card"
+                id="PayPal"
+                name="paymentMethod"
+                value="PayPal"
+                checked
+                onChange={(e) => setPaymentMethod(e.target.value)}
+              />
+            </Col>
+          </Form.Group>
 
-        <Button type="submit" variant="warning" className="w-100 mt-3">
-          Continue
-        </Button>
-        <Button
-          variant="btn btn-light"
-          className="w-100 mt-3"
-          onClick={() => history.push('/shipping')}
-        >
-          Back
-        </Button>
-      </Form>
-    </FormContainer>
+          <Button type="submit" variant="warning" className="w-100 mt-3">
+            Continue
+          </Button>
+          <Button
+            variant="btn btn-light"
+            className="w-100 mt-3"
+            onClick={() => history.push('/shipping')}
+          >
+            Back
+          </Button>
+        </Form>
+      </FormContainer>
+    </LazyShow>
   )
 }
 
