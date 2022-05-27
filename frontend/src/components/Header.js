@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
+import { handledarkMode } from '../actions/darkModeAction'
 import '../index.css'
 
 const Header = () => {
@@ -15,6 +16,20 @@ const Header = () => {
 
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
+
+  const mode = useSelector((state) => state.darkMode)
+  const { isdarkMode } = mode
+
+  const switchDarkMode = () => {
+    isdarkMode
+      ? dispatch(handledarkMode(false))
+      : dispatch(handledarkMode(true))
+  }
+
+  useEffect(() => {
+    document.body.style.backgroundColor = isdarkMode ? '#292c35' : '#fff'
+    document.body.style.color = isdarkMode ? '#fff' : '#292c35'
+  }, [isdarkMode])
 
   const logoutHandler = () => {
     dispatch(logout())
@@ -39,6 +54,16 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ml-auto">
+              <div class="form-check form-switch mt-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckDefault"
+                  onChange={switchDarkMode}
+                  checked={isdarkMode}
+                />
+              </div>
               <LinkContainer to="/cart">
                 <Nav.Link>
                   Cart &nbsp;

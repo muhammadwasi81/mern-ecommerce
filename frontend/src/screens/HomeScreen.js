@@ -27,59 +27,57 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
-      <div data-aos="fade-up" data-aos-duration="3000">
-        <Meta />
-        {!keyword ? (
-          <ProductCarousel />
-        ) : (
-          <Link to="/" className="btn btn-light">
-            Go Back
-          </Link>
-        )}
-        <h1
-          className="text-center mt-2"
-          style={{ textShadow: '4px 4px 4px #eee' }}
-        >
-          Latest Products
-        </h1>
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">{error}</Message>
-        ) : (
-          <>
+      <Meta />
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
+        <Link to="/" className="btn btn-light">
+          Go Back
+        </Link>
+      )}
+      <h1
+        className="text-center mt-2"
+        style={{ textShadow: '1px 1px 1px #eee' }}
+      >
+        Latest Products
+      </h1>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        <>
+          <Row>
+            <CarouselSlider>
+              {products.map((product) => (
+                <Col key={product._id} className="mx-2">
+                  <Product product={product} />
+                </Col>
+              ))}
+            </CarouselSlider>
+          </Row>
+          <div>
             <Row>
-              <CarouselSlider>
-                {products.map((product) => (
-                  <Col key={product._id} className="mx-2">
-                    <Product product={product} />
-                  </Col>
-                ))}
-              </CarouselSlider>
+              <h1
+                className="text-center mt-2"
+                style={{ textShadow: '1px 1px 1px #eee' }}
+              >
+                Featured Products
+              </h1>
+              {products.map((product) => (
+                <Col xs={12} md={3} lg={3}>
+                  <Product product={product} />
+                </Col>
+              ))}
             </Row>
-            <div data-aos="fade-up" data-aos-duration="3000">
-              <Row>
-                <h1
-                  className="text-center mt-2"
-                  style={{ textShadow: '4px 4px 4px #eee' }}
-                >
-                  Featured Products
-                </h1>
-                {products.map((product) => (
-                  <Col xs={12} md={3} lg={3}>
-                    <Product product={product} />
-                  </Col>
-                ))}
-              </Row>
-            </div>
-            <Paginate
-              pages={pages}
-              page={page}
-              keyword={keyword ? keyword : ''}
-            />
-          </>
-        )}
-      </div>
+          </div>
+          <Paginate
+            pages={pages}
+            page={page}
+            keyword={keyword ? keyword : ''}
+          />
+        </>
+      )}
     </>
   )
 }

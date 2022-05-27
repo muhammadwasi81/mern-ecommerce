@@ -31,7 +31,9 @@ const Product = ({ product }) => {
               color="#f8e825"
             />
           </Card.Text>
-          <Card.Text as="h3">${product.price}</Card.Text>
+          <Card.Text as="h3" className="text-black">
+            ${product.price}
+          </Card.Text>
         </Card.Body>
       </Card>
     </>
