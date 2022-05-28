@@ -23,13 +23,20 @@ const responsive = {
 const CarouselSlider = ({ children, deviceType }) => {
   return (
     <Carousel
+      swipeable={false}
+      ssr={true}
       responsive={responsive}
       partialVisible={true}
       draggable={false}
+      autoPlay={deviceType !== 'mobile' ? true : false}
       infinite={true}
       autoPlaySpeed={1000}
       keyBoardControl={true}
+      transitionDuration={500}
+      containerClass="carousel-container"
+      stopOnHover={true}
       removeArrowOnDeviceType={['tablet', 'mobile']}
+      itemClass="carousel-item-padding-40-px"
     >
       {children}
     </Carousel>
