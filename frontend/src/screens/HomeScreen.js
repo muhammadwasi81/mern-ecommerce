@@ -53,7 +53,7 @@ const HomeScreen = ({ match }) => {
               <CarouselSlider>
                 {products.map((product) => (
                   <Col key={product._id} className="mx-2">
-                    <Product product={product} />
+                    <Product product={product} key={product._id} />
                   </Col>
                 ))}
               </CarouselSlider>

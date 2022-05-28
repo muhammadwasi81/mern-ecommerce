@@ -1,27 +1,31 @@
-import React, { useEffect } from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import { listOrders } from '../actions/orderActions';
+import React, { useEffect } from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Table, Button } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import { listOrders } from '../actions/orderActions'
+import '../index.css'
 
 const OrderListScreen = ({ history }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const orderList = useSelector((state) => state.orderList);
-  const { loading, error, orders } = orderList;
+  const orderList = useSelector((state) => state.orderList)
+  const { loading, error, orders } = orderList
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
+  const mode = useSelector((state) => state.darkMode)
+  const { isdarkMode } = mode
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listOrders());
+      dispatch(listOrders())
     } else {
-      history.push('/login');
+      history.push('/login')
     }
-  }, [dispatch, history, userInfo]);
+  }, [dispatch, history, userInfo])
 
   return (
     <>
@@ -31,8 +35,14 @@ const OrderListScreen = ({ history }) => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Table striped bordered hover responsive className="table-sm">
-          <thead>
+        <Table
+          // striped
+          bordered
+          responsive
+          className="table-sm"
+          style={{ cursor: 'pointer' }}
+        >
+          <thead className={`${isdarkMode ? 'text-white' : 'text-black'}`}>
             <tr>
               <th>ID</th>
               <th>USER</th>
@@ -40,12 +50,15 @@ const OrderListScreen = ({ history }) => {
               <th>TOTAL</th>
               <th>PAID</th>
               <th>DELIVERED</th>
-              <th></th>
+              <th>DETAILS</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr key={order._id}>
+              <tr
+                key={order._id}
+                className={`${isdarkMode ? 'text-white' : 'text-black'}`}
+              >
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
@@ -77,7 +90,7 @@ const OrderListScreen = ({ history }) => {
         </Table>
       )}
     </>
-  );
-};
+  )
+}
 
-export default OrderListScreen;
+export default OrderListScreen

@@ -20,6 +20,7 @@ import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
 import TopBar from './components/TopBar'
 import JoinusScreen from './screens/JoinusScreen'
+import BackToTopButton from './components/BackToTopButton'
 
 const Main = () => {
   return (
@@ -59,6 +60,7 @@ const Main = () => {
             exact
           />
           <Route path="/" component={HomeScreen} exact />
+          <BackToTopButton />
         </Container>
       </main>
       <JoinusScreen />

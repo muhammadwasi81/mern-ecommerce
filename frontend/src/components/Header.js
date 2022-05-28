@@ -54,9 +54,9 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ml-auto">
-              <div class="form-check form-switch mt-2">
+              <div className="form-check form-switch mt-2">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
                   role="switch"
                   id="flexSwitchCheckDefault"
