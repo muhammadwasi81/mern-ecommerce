@@ -38,6 +38,9 @@ const ProductListScreen = ({ history, match }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const mode = useSelector((state) => state.darkMode)
+  const { isdarkMode } = mode
+
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET })
 
@@ -96,8 +99,8 @@ const ProductListScreen = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Table striped bordered hover responsive className="table-sm p-5">
-            <thead>
+          <Table bordered responsive className="table-sm p-5">
+            <thead className={`${isdarkMode ? 'text-white' : 'text-black'}`}>
               <tr>
                 <th>ID</th>
                 <th>NAME</th>
@@ -107,7 +110,7 @@ const ProductListScreen = ({ history, match }) => {
                 <th></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={`${isdarkMode ? 'text-white' : 'text-black'}`}>
               {products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>

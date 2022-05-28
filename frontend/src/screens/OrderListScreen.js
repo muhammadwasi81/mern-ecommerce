@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listOrders } from '../actions/orderActions'
-import '../index.css'
 
 const OrderListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -53,12 +52,9 @@ const OrderListScreen = ({ history }) => {
               <th>DETAILS</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={`${isdarkMode ? 'text-white' : 'text-black'}`}>
             {orders.map((order) => (
-              <tr
-                key={order._id}
-                className={`${isdarkMode ? 'text-white' : 'text-black'}`}
-              >
+              <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>

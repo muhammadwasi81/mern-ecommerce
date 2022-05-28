@@ -1,36 +1,39 @@
-import React, { useEffect } from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import { listUsers, deleteUser } from '../actions/userActions';
+import React, { useEffect } from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Table, Button } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import { listUsers, deleteUser } from '../actions/userActions'
 
 const UserListScreen = ({ history }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const userList = useSelector((state) => state.userList);
-  const { loading, error, users } = userList;
+  const userList = useSelector((state) => state.userList)
+  const { loading, error, users } = userList
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
-  const userDelete = useSelector((state) => state.userDelete);
-  const { success: successDelete } = userDelete;
+  const userDelete = useSelector((state) => state.userDelete)
+  const { success: successDelete } = userDelete
+
+  const mode = useSelector((state) => state.darkMode)
+  const { isdarkMode } = mode
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listUsers());
+      dispatch(listUsers())
     } else {
-      history.push('/login');
+      history.push('/login')
     }
-  }, [dispatch, history, successDelete, userInfo]);
+  }, [dispatch, history, successDelete, userInfo])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
-      dispatch(deleteUser(id));
+      dispatch(deleteUser(id))
     }
-  };
+  }
 
   return (
     <>
@@ -40,8 +43,8 @@ const UserListScreen = ({ history }) => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Table striped bordered hover responsive className="table-sm">
-          <thead>
+        <Table bordered responsive className="table-sm">
+          <thead className={`${isdarkMode ? 'text-white' : 'text-black'}`}>
             <tr>
               <th>ID</th>
               <th>NAME</th>
@@ -50,7 +53,7 @@ const UserListScreen = ({ history }) => {
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={`${isdarkMode ? 'text-white' : 'text-black'}`}>
             {users.map((user) => (
               <tr key={user._id}>
                 <td>{user._id}</td>
@@ -85,7 +88,7 @@ const UserListScreen = ({ history }) => {
         </Table>
       )}
     </>
-  );
-};
+  )
+}
 
-export default UserListScreen;
+export default UserListScreen
