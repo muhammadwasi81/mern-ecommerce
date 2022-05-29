@@ -33,7 +33,6 @@ export default function ContactUs() {
       const { data } = await axios.post(`/api/email`, {
         name,
         email,
-        subject,
         message,
       })
       setLoading(false)
@@ -117,20 +116,6 @@ export default function ContactUs() {
                             aria-label="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            aria-describedby="basic-addon1"
-                          />
-                        </InputGroup>
-                      </li>
-                      <li className="list-unstyled">
-                        <InputGroup className="mb-3" style={{ width: '250px' }}>
-                          <InputGroup.Text id="basic-addon1">
-                            <i className="fas fa-book"></i>
-                          </InputGroup.Text>
-                          <FormControl
-                            placeholder="Subject"
-                            aria-label="subject"
-                            value={subject}
-                            onChange={(e) => setSubject(e.target.value)}
                             aria-describedby="basic-addon1"
                           />
                         </InputGroup>

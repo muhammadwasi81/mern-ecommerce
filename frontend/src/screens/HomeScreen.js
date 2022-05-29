@@ -67,7 +67,7 @@ const HomeScreen = ({ match }) => {
                   Featured Products
                 </h1>
                 {products.map((product) => (
-                  <Col xs={12} md={3} lg={3}>
+                  <Col xs={12} md={4} lg={3} sm={6} xl={3}>
                     <Product product={product} />
                   </Col>
                 ))}

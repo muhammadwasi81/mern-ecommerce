@@ -40,14 +40,13 @@ const mailgun = () =>
   })
 
 app.post('/api/email', (req, res) => {
-  const { email, subject, message, name } = req.body
+  const { email, message, name } = req.body
   mailgun()
     .messages()
     .send(
       {
         from: `${email}`,
         to: `Wasiarain819@gmail.com`,
-        subject: `${subject}`,
         text: `${message}`,
         html: `
         <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
