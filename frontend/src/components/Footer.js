@@ -19,13 +19,12 @@ import axios from 'axios'
 export default function ContactUs() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
 
   const submitHandler = async (e, data) => {
     e.preventDefault()
-    if (!email || !subject || !message) {
+    if (!name || !email || !message) {
       return toast.error('Please fill email, subject and message')
     }
     try {
@@ -39,7 +38,6 @@ export default function ContactUs() {
       toast.success(data.message)
       setName('')
       setEmail('')
-      setSubject('')
       setMessage('')
     } catch (err) {
       setLoading(false)
@@ -53,6 +51,12 @@ export default function ContactUs() {
 
   return (
     <footer>
+      <ToastContainer
+        position="top-right"
+        closeOnClick
+        theme="colored"
+        limit={1}
+      />
       <Container fluid style={{ backgroundColor: '#203040', color: '#ffffff' }}>
         <Container>
           <Row>
