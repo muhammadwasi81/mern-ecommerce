@@ -153,9 +153,7 @@ export default function ContactUs() {
               </p>
             </Col>
             <Col sm={4}>
-              <p className="my-2 fs-5">
-                privacy policy | terms of use | Sitemap
-              </p>
+              <p className="my-2 fs-5">privacy policy | terms of use</p>
             </Col>
           </Row>
         </Container>

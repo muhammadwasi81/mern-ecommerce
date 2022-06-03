@@ -59,7 +59,7 @@ const ProfileScreen = ({ location, history }) => {
   return (
     <>
       <ToastContainer
-        position="bottom-center"
+        position="top-right"
         closeOnClick
         theme="colored"
         limit={1}

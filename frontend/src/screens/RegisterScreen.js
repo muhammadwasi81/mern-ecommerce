@@ -46,7 +46,7 @@ const RegisterScreen = ({ location, history }) => {
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <ToastContainer
-        position="bottom-center"
+        position="top-right"
         closeOnClick
         theme="colored"
         limit={1}

@@ -9,7 +9,7 @@ const TopBar = () => {
         <Col className="xs-12 text-center">
           <i className="fas fa-tags"></i> &nbsp;
           <span className="blink_text">
-            APP-EXCLUSIVE: 30% OFF ON ALL PRODUCTS
+            APP-EXCLUSIVE: 15% OFF ON ALL PRODUCTS
           </span>
         </Col>
       </Row>

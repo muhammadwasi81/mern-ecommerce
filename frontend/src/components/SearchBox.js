@@ -22,7 +22,7 @@ const SearchBox = ({ history }) => {
   return (
     <form onSubmit={submitHandler} className="mx-auto">
       <ToastContainer
-        position="bottom-center"
+        position="top-right"
         closeOnClick
         theme="colored"
         limit={1}
